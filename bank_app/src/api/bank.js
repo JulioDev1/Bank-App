@@ -25,7 +25,18 @@ export const createAccount = async (
       email: email,
       password: password,
     });
-    console.log(response);
+    console.log(response.data);
+    return response.data;
+  } catch (erro) {
+    console.log(erro);
+  }
+};
+export const loginAccount = async (email, password) => {
+  try {
+    const response = await api.post("/login", {
+      email: email,
+      password: password,
+    });
     return response.data;
   } catch (erro) {
     console.log(erro);

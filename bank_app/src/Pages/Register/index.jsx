@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Input } from "../../components/Input";
-import { Button, FormContainer, PageContainer } from "./styled";
+import { Button, FormContainer, PageContainer, Span } from "./styled";
 import { createAccount } from "../../api/bank";
+import { Link } from "react-router-dom";
 
 export function Register() {
   const [data, setData] = useState({
@@ -23,6 +24,7 @@ export function Register() {
       return newData;
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
@@ -36,7 +38,6 @@ export function Register() {
         data.email,
         data.password
       );
-      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
@@ -46,8 +47,8 @@ export function Register() {
   console.log(data);
 
   return (
-    <PageContainer onSubmit={handleSubmit}>
-      <FormContainer>
+    <PageContainer>
+      <FormContainer onSubmit={handleSubmit}>
         <h1>Registre-se!</h1>
         <Input
           value={data.nome}
@@ -105,7 +106,11 @@ export function Register() {
           name="password"
           onChange={handleChange}
         />
-        <Button type="button" onClick={handleSubmit}>
+
+        <Link to="/login">
+          <Span>ja tem cadastro ? entre</Span>
+        </Link>
+        <Button type="submit" onClick={handleSubmit}>
           Registrar
         </Button>
       </FormContainer>

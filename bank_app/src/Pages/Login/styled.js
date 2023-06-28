@@ -8,7 +8,7 @@ export const FormContainer = styled.form`
   gap: 10px;
   border: 1px solid #cccc;
   width: 18rem;
-  height: 25rem;
+  height: 13rem;
   padding: 12px;
   border-radius: 10px;
 `;
@@ -27,8 +27,4 @@ export const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   border: none;
-`;
-export const Span = styled.span`
-  color: #7765e3;
-  font-size: 12px;
 `;

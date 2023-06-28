@@ -1,9 +1,9 @@
-import { Register } from "./Pages/Register";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Register />
+      <Outlet />
     </>
   );
 }

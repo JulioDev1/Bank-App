@@ -6,6 +6,9 @@ export const GlobalStyles = createGlobalStyle`
         width:100%;      
         box-sizing: border-box;
     }
+    a{
+        text-decoration:none;
+    }
     #root{
         height:100vh;
     }

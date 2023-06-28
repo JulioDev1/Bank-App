@@ -6,8 +6,8 @@ export const InputStyled = styled.input`
   border-radius: 5px;
   border: 1px solid #cccc;
 
-  &::-webkit-input-placeholder {
-    padding-left: 15px;
+  padding-left: 15px;
+  &::placeholder {
     font-family: "Poppins", sans-serif;
   }
 `;
