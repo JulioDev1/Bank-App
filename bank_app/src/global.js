@@ -5,6 +5,8 @@ export const GlobalStyles = createGlobalStyle`
         font-family: "Poppins", sans-serif;  
         width:100%;      
         box-sizing: border-box;
+        background-color: #FAFAFA;
+
     }
     a{
         text-decoration:none;

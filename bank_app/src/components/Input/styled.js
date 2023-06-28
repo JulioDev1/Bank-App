@@ -4,7 +4,8 @@ export const InputStyled = styled.input`
   width: 90%;
   height: 28px;
   border-radius: 5px;
-  border: 1px solid #cccc;
+  background-color: #eeeeee;
+  border: none;
 
   padding-left: 15px;
   &::placeholder {

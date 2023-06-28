@@ -5,6 +5,8 @@ import { GlobalStyles } from "./global.js";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Login } from "./Pages/Login/index.jsx";
 import { Register } from "./Pages/Register/index.jsx";
+import { AccountPage } from "./Pages/AccountPage/index.jsx";
+import { CreateCheckAccount } from "./Pages/CreateCheckAccount/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/accountPage",
+        element: <AccountPage />,
+      },
+      {
+        path: "/createCheckAccount",
+        element: <CreateCheckAccount />,
       },
     ],
   },

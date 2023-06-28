@@ -24,12 +24,13 @@ export const Login = () => {
     e.preventDefault();
     try {
       const response = await loginAccount(data.email, data.password);
-
+      const link = "/accountPage";
       console.log(response);
       if (response) {
         setValid(false);
-        window.location.href("/userPage");
+        window.location.assign(link);
       } else {
+        setValid(true);
       }
       return response;
     } catch (error) {
