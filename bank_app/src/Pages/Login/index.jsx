@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Input } from "../../components/Input";
 import { Button, FormContainer, PageContainer } from "./styled";
 import { loginAccount } from "../../api/bank";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [data, setData] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const [isValid, setValid] = useState(false);
 
@@ -24,15 +26,18 @@ export const Login = () => {
     e.preventDefault();
     try {
       const response = await loginAccount(data.email, data.password);
-      const link = "/accountPage";
+
       console.log(response);
       if (response) {
         setValid(false);
-        window.location.assign(link);
+
+        navigate("/accountPage");
+
+        return response;
       } else {
         setValid(true);
+        navigate("/login");
       }
-      return response;
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +63,7 @@ export const Login = () => {
           name="password"
           onChange={handleChange}
         />
-        <Button type="submit" onClick={handleSubmit}>
+        <Button type="button" onClick={handleSubmit}>
           Login
         </Button>
       </FormContainer>

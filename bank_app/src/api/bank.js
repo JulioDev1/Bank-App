@@ -2,8 +2,8 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "http://localhost:8000",
+  withCredentials: true,
 });
-
 export const createAccount = async (
   nome,
   cpf,
@@ -31,6 +31,7 @@ export const createAccount = async (
     console.log(erro);
   }
 };
+
 export const loginAccount = async (email, password) => {
   try {
     const response = await api.post("/login", {
@@ -40,5 +41,54 @@ export const loginAccount = async (email, password) => {
     return response.data;
   } catch (erro) {
     console.log(erro);
+  }
+};
+export const createCheckAccount = async (nome, numero, saldo) => {
+  try {
+    const response = await api.post("/createCurrentAccount", {
+      numero: numero,
+      nome: nome,
+      saldo: saldo,
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const viewAllAccount = async () => {
+  try {
+    const response = await api.get("/allUserList");
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const submitTransactions = async (
+  valor,
+  contacorrente_origem,
+  contacorrente_destino,
+  observacao
+) => {
+  try {
+    const response = await api.put("/submitTransActions", {
+      valor: valor,
+      contacorrente_origem: contacorrente_origem,
+      contacorrente_destino: contacorrente_destino,
+      observacao: observacao,
+    });
+    return response.data;
+  } catch (error) {
+    consol.log(error);
+  }
+};
+
+export const listAllTransactions = async () => {
+  try {
+    const response = await api.get("/listUserTransactions");
+    return response.data;
+  } catch (error) {
+    console.log(error);
   }
 };

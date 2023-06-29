@@ -24,5 +24,7 @@ export const PageContainer = styled.div`
 export const AccountContainer = styled.div`
   height: 100%;
   display: flex;
+  justify-content: center;
+  gap: 10px;
   padding: 10px;
 `;

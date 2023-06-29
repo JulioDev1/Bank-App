@@ -1,16 +1,35 @@
+import { useNavigate } from "react-router-dom";
 import {
   NavBarAccount,
   Button,
   PageContainer,
   AccountContainer,
 } from "./styled";
-
-function handleChangePage() {
-  const link = "/createCheckAccount";
-  window.location.assign(link);
-}
+import { Accounts } from "../../components/Accounts";
+import { useEffect, useState } from "react";
+import { viewAllAccount } from "../../api/bank";
 
 export const AccountPage = () => {
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
+
+  function handleChangePage() {
+    navigate("/createCheckAccount");
+  }
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await viewAllAccount();
+        setData(result);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
+  }, []);
+
+  console.log(data);
   return (
     <PageContainer>
       <NavBarAccount>
@@ -18,7 +37,15 @@ export const AccountPage = () => {
         <Button onClick={handleChangePage}>criar conta</Button>
       </NavBarAccount>
       <AccountContainer>
-        <h1>Nenhuma conta Registrada</h1>
+        {data.map((users) => (
+          <Accounts
+            key={users.id}
+            nome={users.nome}
+            saldo={users.saldo}
+            numero={users.numero}
+            data_de_abertura={users.data_de_abertura}
+          />
+        ))}
       </AccountContainer>
     </PageContainer>
   );

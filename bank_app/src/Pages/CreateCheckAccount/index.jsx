@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Input } from "../../components/Input";
 import { Button, FormContainer, PageContainer } from "./styled";
+import { createCheckAccount } from "../../api/bank";
 
 export const CreateCheckAccount = () => {
   const [data, setData] = useState({
@@ -20,15 +21,35 @@ export const CreateCheckAccount = () => {
     });
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  }
+
+    try {
+      const response = await createCheckAccount(
+        data.nome,
+        data.numero,
+        data.saldo
+      );
+      console.log(response);
+
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   console.log(data);
   return (
     <PageContainer>
-      <FormContainer>
+      <FormContainer onSubmit={handleSubmit}>
         <h1>Criar Conta</h1>
+        <Input
+          onChange={handleChange}
+          name="nome"
+          value={data.nome}
+          saldo={data.nome}
+          placeholder="informe nome da conta"
+        />
         <Input
           onChange={handleChange}
           name="numero"
@@ -45,14 +66,7 @@ export const CreateCheckAccount = () => {
           placeholder="informe o valor de deposito da conta"
         />
 
-        <Input
-          onChange={handleChange}
-          name="nome"
-          value={data.nome}
-          saldo={data.nome}
-          placeholder="informe nome da conta"
-        />
-        <Button onChange={handleSubmit}>Create Account</Button>
+        <Button onSubmit={handleSubmit}>Create Account</Button>
       </FormContainer>
     </PageContainer>
   );
