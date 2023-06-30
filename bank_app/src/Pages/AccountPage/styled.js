@@ -24,7 +24,17 @@ export const PageContainer = styled.div`
 export const AccountContainer = styled.div`
   height: 100%;
   display: flex;
-  justify-content: center;
   gap: 10px;
-  padding: 10px;
+  flex-wrap: wrap;
+`;
+export const UserContainer = styled.div`
+  display: flex;
+  padding: 12px;
+  gap: 20px;
+  padding-right: 25px;
+  flex-direction: row;
+`;
+export const Buttons = styled.div`
+  display: flex;
+  gap: 10px;
 `;

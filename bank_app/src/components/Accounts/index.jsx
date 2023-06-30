@@ -6,6 +6,7 @@ import {
   Value,
   FieldsInfo,
   HeaderFields,
+  ValueFields,
 } from "./styled";
 
 export const Accounts = ({ numero, nome, data_de_abertura, saldo, key }) => {
@@ -16,10 +17,10 @@ export const Accounts = ({ numero, nome, data_de_abertura, saldo, key }) => {
         <NameField>{nome}</NameField>
       </HeaderFields>
       <FieldsInfo>
-        <div>
+        <ValueFields>
           <Value>Valor em conta</Value>
           <Price>{saldo} R$</Price>
-        </div>
+        </ValueFields>
         <DateField>{data_de_abertura}</DateField>
       </FieldsInfo>
     </AccountContainer>

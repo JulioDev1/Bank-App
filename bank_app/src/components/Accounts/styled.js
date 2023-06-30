@@ -41,3 +41,7 @@ export const HeaderFields = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const ValueFields = styled.div`
+  border-top: 1px solid #cccc;
+  width: 100%;
+`;

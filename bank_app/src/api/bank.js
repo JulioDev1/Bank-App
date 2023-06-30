@@ -68,15 +68,13 @@ export const viewAllAccount = async () => {
 export const submitTransactions = async (
   valor,
   contacorrente_origem,
-  contacorrente_destino,
-  observacao
+  contacorrente_destino
 ) => {
   try {
     const response = await api.put("/submitTransActions", {
       valor: valor,
       contacorrente_origem: contacorrente_origem,
       contacorrente_destino: contacorrente_destino,
-      observacao: observacao,
     });
     return response.data;
   } catch (error) {
@@ -87,7 +85,7 @@ export const submitTransactions = async (
 export const listAllTransactions = async () => {
   try {
     const response = await api.get("/listUserTransactions");
-    return response.data;
+    return response.data.data;
   } catch (error) {
     console.log(error);
   }
